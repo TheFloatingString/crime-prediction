@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-		<title>Caminar by TEMPLATED</title>
+		<title>Crime Stopper</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<style>
 			#map {
         height: 100%;
@@ -26,17 +27,27 @@
 					<section id="one" class="wrapper style1">
 
 						<header class="special">
-							<h2>Crime Heat Map for Montreal</h2>
-							<p id="current-time"></p>
+							<h2 style="margin-top: -15px;">Crime Heat Map for Montreal</h2>
+							<p id="current-time" style="margin-bottom: -10px;"></p>
 						</header>
-						<div class="content" id="map"></div>
+						<div class="content" id="map" style="height: 600px;"></div>
 						<script>
+							var myGeoJson = $.ajax({
+									url:"{{url_for('static', filename='limitespdq.geojson')}}",
+									dataType: "geojson",
+									success: console.log("geojson data successfully loaded."),
+									error: console.log("error")
+								}).responseText;
+
+							console.log(myGeoJson);
+
 							var map;
 							function initMap() {
 								map = new google.maps.Map(document.getElementById('map'), {
-									center: {lat: 45.5017, lng: -73.5673},
-									zoom: 10
+									center: {lat: 45.535212, lng: -73.673212},
+									zoom: 11
 								});
+
 							}
 						</script>
 						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQqgk65PB3UDym0ZXi2YkJ9WWYFtJDRs0&callback=initMap" async defer></script>
@@ -80,6 +91,5 @@
 			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
 			<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
 			<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
-
 	</body>
 </html>

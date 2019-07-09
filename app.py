@@ -7,6 +7,7 @@ from flask import Flask, flash, redirect, url_for, render_template, request, Res
 import glob
 import os
 import re
+import json
 
 import pandas as pd
 import datetime
@@ -17,10 +18,6 @@ app = Flask(__name__)
 app.secret_key = "zjd92kn"
 UPLOAD_FOLDER = 'static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-
-
-# global variables
-
 
 
 # home page
