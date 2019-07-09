@@ -1,0 +1,85 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>Caminar by TEMPLATED</title>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
+		<style>
+			#map {
+        height: 100%;
+      	}
+  		</style>
+	</head>
+	<body>
+
+		<!-- Header -->
+			<header id="header">
+				<div class="logo"><a href="home">Crime Stopper<span>by CrimeAI</span></a></div>
+			</header>
+
+		<!-- Main -->
+			<section id="main">
+				<div class="inner">
+
+				<!-- One -->
+					<section id="one" class="wrapper style1">
+
+						<header class="special">
+							<h2>Crime Heat Map for Montreal</h2>
+							<p id="current-time"></p>
+						</header>
+						<div class="content" id="map"></div>
+						<script>
+							var map;
+							function initMap() {
+								map = new google.maps.Map(document.getElementById('map'), {
+									center: {lat: 45.5017, lng: -73.5673},
+									zoom: 10
+								});
+							}
+						</script>
+						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQqgk65PB3UDym0ZXi2YkJ9WWYFtJDRs0&callback=initMap" async defer></script>
+					</section>
+				</div>
+			</section>
+
+			<script type="text/javascript">
+				function getTime(){
+					var today = new Date();
+					var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+					var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+					var dateTime = date+' '+time;
+					return dateTime
+				}
+				
+				setInterval(function(){
+					document.getElementById("current-time").innerHTML = getTime();
+				}, 1000)
+
+			</script>
+
+		<!-- Footer -->
+			<footer id="footer">
+				<div class="container">
+					<ul class="icons">
+						<li><a href="#" class="icon fa-twitter"><span class="label">Twitter</span></a></li>
+						<li><a href="#" class="icon fa-facebook"><span class="label">Facebook</span></a></li>
+						<li><a href="#" class="icon fa-instagram"><span class="label">Instagram</span></a></li>
+						<li><a href="mailto:stephen.lu.2002@gmail.com?" class="icon fa-envelope-o"><span class="label">Email</span></a></li>
+					</ul>
+				</div>
+				<div class="copyright">
+					&copy; Untitled. All rights reserved. Images <a href="https://unsplash.com">Unsplash</a> Design <a href="https://templated.co">TEMPLATED</a>
+				</div>
+			</footer>
+
+		<!-- Scripts -->
+			<script src="{{ url_for('static', filename='assets/js/jquery.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/jquery.poptrox.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/skel.min.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/util.js') }}"></script>
+			<script src="{{ url_for('static', filename='assets/js/main.js') }}"></script>
+
+	</body>
+</html>
