@@ -1,6 +1,9 @@
 import pandas as pd 
 import numpy as np 
 import matplotlib.pyplot as plt
+from sklearn.ensemble import RandomForestRegressor
+from sklearn.model_selection import train_test_split
+from sklearn.preprocessing import MinMaxScaler
 
 weather_data_mtl = pd.read_csv("datasets/climate-daily.csv")
 
@@ -13,32 +16,37 @@ print(crime_data.shape)
 
 preprocessed_weather_data_mtl = np.load("preprocessed_data/X_train_weather.npy")
 preprocessed_weather_data_mtl[preprocessed_weather_data_mtl == np.inf] = 0
+preprocessed_weather_data_mtl[preprocessed_weather_data_mtl == np.nan] = 0
+preprocessed_weather_data_mtl = preprocessed_weather_data_mtl[np.logical_not(np.isnan(preprocessed_weather_data_mtl))].reshape(1648,20)
+
+min_max_scaler = MinMaxScaler()
+print(preprocessed_weather_data_mtl[:,0:10].shape)
+preprocessed_weather_data_mtl = min_max_scaler.fit_transform(preprocessed_weather_data_mtl[:,0:10])
 
 print("weather data shape")
 print(preprocessed_weather_data_mtl.shape)
 
 print()
-print("Calculating correlations...")
+print("ML Linear Regression...")
 
 plt.figure(figsize=(20,10))
 
 for index in range(len(pdq_list)):
 
-	plt.subplot(17, 2, index+1)
+	print("PDQ: "+str(pdq_list[index]))
 
 	crime_data = pd.read_csv("datasets/pdq_"+str(int(pdq_list[index]))+".csv", index_col='Unnamed: 0').drop(columns=['jour','nuit','soir'])
 
-	correl_matrix = []
-	for column in crime_data.columns.values:
-		row_values = []
-		for feature in range(len(preprocessed_weather_data_mtl[0])):
-			print(str(np.corrcoef(preprocessed_weather_data_mtl[:, feature], crime_data[column].values)[0][1])[0:4], end=' ')
-			row_values.append(np.corrcoef(preprocessed_weather_data_mtl[:, feature], crime_data[column].values)[0][1])
-		print()
-		correl_matrix.append(row_values)
+	X_data = preprocessed_weather_data_mtl
+	y_data = crime_data.values
 
-	plt.imshow(correl_matrix)	
-	plt.colorbar()
+	X_train, X_test, y_train, y_test = train_test_split(X_data[:,0:10], y_data, test_size=0.2)
 
-plt.savefig("correl_matrix_test.png", dpi=1000)
+	print(X_train.shape)
+	print(y_train.shape)
+
+	clf = RandomForestRegressor()
+	clf.fit(X_train, y_train)
+	print(clf.score(X_test, y_test))
+	print()
 
