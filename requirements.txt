@@ -6,3 +6,4 @@ requests
 tweepy
 yahoo_fin
 flask
+gunicorn
