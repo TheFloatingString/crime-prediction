@@ -1,0 +1,8 @@
+
+::::::::::::::::: OVERALL OUTPUT DERIVATIONS :::::::::::::::::
+
+Accuracy: 0.6153615286496761%
+
+Cohen's Kappa Co-efficient (K): 0.5809017436029205
+
+Area Under the Curve (AUC): 0.9434666149561989
