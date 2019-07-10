@@ -13,6 +13,8 @@ import pandas as pd
 import datetime
 
 from src.draw_map import * 
+from sklearn.preprocessing import MinMaxScaler
+from sklearn.externals import joblib
 
 
 # configure Flask app
@@ -21,6 +23,7 @@ app.secret_key = "zjd92kn"
 UPLOAD_FOLDER = 'static'
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
+X_min_max_scaler = joblib.load("static/saved_models/X_min_max_scaler.pkl")
 
 default_X_input_data = [ 7.24181982e+03,7.29174023e+03,7.23575977e+03,7.26520996e+03
 ,1.93998000e+09,2.49303893e-02,8.78226158e-03,2.52015299e-02

@@ -59,7 +59,7 @@
 							    }]
 							}
 
-							var bar_data_array = [0,0,0,0,0]
+							var bar_data_array = [0,0,0,0,0,0]
 
 							var myGeoJson = $.ajax({
 									url:"{{url_for('static', filename='limitespdq.geojson')}}",
@@ -91,7 +91,7 @@
 
 					    // The data for our dataset
 					    data: {
-					        labels: ['0', '1', '2', '3', '4', '5'],
+					        labels: ['No crime', '0', '1', '2', '3', '4', '5'],
 					        datasets: [{
 					            label: 'Probability',
 					            backgroundColor: 'rgba(255, 200, 0, 0.5)',

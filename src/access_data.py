@@ -10,6 +10,9 @@ from datetime import date, timedelta
 current_date = str(date.today() - timedelta(days=2))
 previous_date = str(date.today() - timedelta(days=3))
 
+print(current_date)
+print(previous_date)
+
 base_url = """https://geo.weather.gc.ca/geomet/features/collections/climate-daily/items?time={}%2000:00:00/{}%2000:00:00&STN_ID=30165&sortby=PROVINCE_CODE,STN_ID,LOCAL_DATE&f=csv&limit=150000&offset=0""".format(previous_date, current_date)
 
 print(base_url)
