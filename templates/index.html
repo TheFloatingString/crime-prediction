@@ -48,8 +48,12 @@
 
 						<div style="padding:2%; width:100%; height:50px; text-align:center">
 							<p><b>Montreal conditions</b>: Temp: {{temp}} C - Wind: {{wind}} km/h - Humidity: {{humidity}} - NASDAQ: {{nasdaq}} $USD
-							<p style="font-size: 18px;">Police Post ID: <span id="p1" style="font-weight:bold"><span style="color:red">Click on the map below to view the ID</span></span><br/><a href="https://spvm.qc.ca/en/pdq" id="redirect_pdq_link" class="btn btn-outline-primary" target="_blank" style="padding:2px;">Contact this Police Post</a></p>
-						</div>			<br/><br/><br/><br/>
+							<p style="font-size: 18px;">Police Post ID: <span id="p1" style="font-weight:bold"><span style="color:red">Click on the map below to view the ID</span></span><br/><a href="https://spvm.qc.ca/en/pdq" id="redirect_pdq_link" class="btn btn-outline-primary" target="_blank" style="padding:2px;">Contact Police Post <span id="pdq_num"><b>(Press the map below)</b></a>
+							<br><span style="font-size: 12px;"><i>The above link redirects you to the Police Post <b><span id="pdq_num"><b>(Press the map below)</b></span></b> webpage</i></span><br>
+							<br><br>
+						</div>
+
+						</p>			<br/><br/><br/><br/>
 
 						<div style="padding:2%; width:100%; height:200px;">
 							<canvas id="myChart" height="75"></canvas>

@@ -42,7 +42,7 @@ def return_coords(X_input_data=None):
 					});
 					pdqPolygon"""
 		output_str+=str(counter)+""".setMap(map);"""
-		output_str+="google.maps.event.addListener(pdqPolygon"+str(counter)+",\"click\",function() {							$.get(\"/get_pdq_data/"+str(pdq_identifier)+".0\", function(data) {console.log($.parseJSON(data));myBarChart.data.datasets[0].data = $.parseJSON(data);myBarChart.update();document.getElementById(\"p1\").innerHTML = \""+pdq_identifier+"\";document.getElementById(\"redirect_pdq_link\").href=\"https://spvm.qc.ca/en/pdq"+str(int(pdq_identifier))+"\";})});"
+		output_str+="google.maps.event.addListener(pdqPolygon"+str(counter)+",\"click\",function() {							$.get(\"/get_pdq_data/"+str(pdq_identifier)+".0\", function(data) {console.log($.parseJSON(data));myBarChart.data.datasets[0].data = $.parseJSON(data);myBarChart.update();document.getElementById(\"p1\").innerHTML = \""+pdq_identifier+"\";document.getElementById(\"pdq_num\").innerHTML = \""+pdq_identifier+"\";document.getElementById(\"redirect_pdq_link\").href=\"https://spvm.qc.ca/en/pdq"+str(int(pdq_identifier))+"\";})});"
 		counter += 1
 	return output_str
 
