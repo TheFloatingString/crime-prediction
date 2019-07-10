@@ -59,12 +59,12 @@ def home():
 	,5.22388060e-02,3.52941176e-01,-4.52261307e-02,0.00000000e+00
 	,0.00000000e+00,-9.62962963e-01,-4.12698413e-01,-1.52173913e-01
 	,0.00000000e+00,0.00000000e+00]
-	return render_template('index.html', draw_pdq_code=return_coords(default_X_input_data), temp=str(temp)[:4], wind=wind, humidity=humidity, nasdaq=str(nasdaq)[:6])
+	default_X_input_data = X_min_max_scaler.fit_transform(np.array(default_X_input_data).reshape(1,-1))[0]
+
+	return render_template('index.html', draw_pdq_code=return_coords(default_X_input_data), temp=str(temp)[:4], wind=wind, humidity=humidity, nasdaq=str(nasdaq)[:7])
 
 @app.route('/get_pdq_data/<pdq_number>', methods=['GET'])
 def get_pdq_data(pdq_number):
-
-
 	return compute_level(default_X_input_data, str(pdq_number))
 
 # export heatmap as image file

@@ -21,7 +21,7 @@ def return_coords(X_input_data=None):
 		prediction = list(clf.predict([X_input_data])[0])
 		print(prediction)
 		indices = [i for i, x in enumerate(prediction) if x == max(prediction)]
-
+		print(pdq_identifier, indices)
 		predicted_level = indices[-1]
 		print(predicted_level)
 		hex_color_code = level_color_dict[str(int(predicted_level))]
