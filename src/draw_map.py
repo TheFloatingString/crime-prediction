@@ -21,7 +21,7 @@ def return_coords(X_input_data=None):
 		prediction = list(clf.predict([X_input_data])[0])
 		print(prediction)
 		indices = [i for i, x in enumerate(prediction) if x == max(prediction)]
-		print(pdq_identifier, indices)
+
 		predicted_level = indices[-1]
 		print(predicted_level)
 		hex_color_code = level_color_dict[str(int(predicted_level))]
@@ -42,9 +42,11 @@ def return_coords(X_input_data=None):
 					});
 					pdqPolygon"""
 		output_str+=str(counter)+""".setMap(map);"""
-		output_str+="google.maps.event.addListener(pdqPolygon"+str(counter)+",\"click\",function() {							$.get(\"/get_pdq_data/"+str(pdq_identifier)+".0\", function(data) {console.log($.parseJSON(data));myBarChart.data.datasets[0].data = $.parseJSON(data);myBarChart.update();document.getElementById(\"p1\").innerHTML = \""+pdq_identifier+"\";})});"
+		output_str+="google.maps.event.addListener(pdqPolygon"+str(counter)+",\"click\",function() {							$.get(\"/get_pdq_data/"+str(pdq_identifier)+".0\", function(data) {console.log($.parseJSON(data));myBarChart.data.datasets[0].data = $.parseJSON(data);myBarChart.update();document.getElementById(\"p1\").innerHTML = \""+pdq_identifier+"\";document.getElementById(\"redirect_pdq_link\").href=\"https://spvm.qc.ca/en/pdq"+str(int(pdq_identifier))+"\";})});"
 		counter += 1
 	return output_str
+
+# document.getElementById("abc").href="xyz.php";
 
 def compute_level(X_input_data, pdq_identifier):
 	clf = joblib.load("static/saved_models/v2_rn_forest_"+str(pdq_identifier)+".pkl")
