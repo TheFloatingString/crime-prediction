@@ -34,35 +34,31 @@
 	</head>
 	<body>
 
-		<!-- Header -->
-			<header id="header">
-				<div class="logo"><a href="home">Crime Stopper<span>by CrimeAI</span></a></div>
-			</header>
-
 		<!-- Main -->
-			<section id="main">
+			<section id="main" style="">
 				<div class="inner">
 
 				<!-- One -->
 					<section id="one" class="wrapper style1">
 
 						<header class="special">
-							<h2 style="margin-top: -15px;">Crime Heat Map for Montreal</h2>
-							<p id="current-time" style="margin-bottom: -10px;"></p>
+							<h2 style="margin-top: -15px;">CrimeAI Heat Map for Montreal</h2>
+							<p style="font-size:18px;color:grey"><br/>CrimeAI uses real time weather data, news articles and economic indicators to effectively predict the severity of possible crime in the metropolitan area of Montreal. On an hourly basis, our application pulls a plethora of climate data from the MSC Datamart, extracts economic standards from the NASDAQ API, and web crawls the latest relevant news articles from CBC Montreal. Our cutting-edge deep learning models then analyse these three sources of data to gauge the risk of critical criminal activity in all 31 police neighborhoods in Montreal. The outputs are then visualized in an interactive heat map on our web application.<br/><br/></p>
+							<p id="current-time" style="margin-bottom: -50px;font-weight:bold"></p>
 						</header>
 
-						<div style="padding:2%; width:100%; height:50px; background-color: white">
+						<div style="padding:2%; width:100%; height:50px; text-align:center">
 							<p><b>Montreal conditions</b>: Temp: {{temp}} C - Wind: {{wind}} km/h - Humidity: {{humidity}} - NASDAQ: {{nasdaq}} $USD
-							<p>PDQ <span id="p1">None selected</span> <a class="btn btn-secondary" href="https://spvm.qc.ca/fr/PDQ/" target="_blank">Contact PDQ</a></p>
+							<p>PDQ <span id="p1" style="font-weight:bold">None selected</span><br/><a class="btn btn-secondary" href="https://spvm.qc.ca/fr/PDQ/" target="_blank" style="padding:2px;">Contact PDQ</a></p>
+						</div>			<br/><br/><br/><br/>
 
-						</div>						
+						<div style="padding:2%; width:100%; height:200px;">
+							<canvas id="myChart" height="75"></canvas>
 
-						<div style="padding:2%; width:100%; height:200px; background-color: white">
-							<canvas id="myChart" height="30"></canvas>
+						</div><br/><br/><br/><br/><br/><br/>
 
-						</div>
 						
-						<p><center><b>Click on the coloured regions below to view predicted crime rates</b></center></p>
+						<p><center><b>Click on the coloured regions below to view predicted severity of possible crime</b></center></p>
 
 						<div class="content" id="map" style="height: 600px;"></div>
 						<script>
