@@ -20,7 +20,9 @@ def return_coords(X_input_data=None):
 		clf = joblib.load("static/saved_models/v2_rn_forest_"+str(pdq_identifier)+".0.pkl")
 		prediction = list(clf.predict([X_input_data])[0])
 		print(prediction)
-		predicted_level = prediction.index(max(prediction))
+		indices = [i for i, x in enumerate(prediction) if x == max(prediction)]
+
+		predicted_level = indices[-1]
 		print(predicted_level)
 		hex_color_code = level_color_dict[str(int(predicted_level))]
 
