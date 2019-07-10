@@ -43,13 +43,13 @@
 
 						<header class="special">
 							<h2 style="margin-top: -15px;">CrimeAI Heat Map for Montreal</h2>
-							<p style="font-size:18px;color:grey"><br/>CrimeAI uses real time weather data, news articles and economic indicators to effectively predict the severity of possible crime in the metropolitan area of Montreal. On an hourly basis, our application pulls a plethora of climate data from the MSC Datamart, extracts economic standards from the NASDAQ API, and web crawls the latest relevant news articles from CBC Montreal. Our cutting-edge deep learning models then analyse these three sources of data to gauge the risk of critical criminal activity in all 31 police neighborhoods in Montreal. The outputs are then visualized in an interactive heat map on our web application.<br/><br/></p>
+							<p style="font-size:18px;color:grey"><br/>CrimeAI uses real-time weather data, news articles and economic indicators to effectively predict the severity of possible crime in the metropolitan area of Montreal. On an hourly basis, our application pulls a plethora of climate data from the MSC Datamart, extracts economic standards from the NASDAQ API, and web crawls the latest relevant news articles from CBC Montreal. Our cutting-edge deep learning models then analyze these three sources of data to gauge the risk of critical criminal activity in all 31 police neighborhoods in Montreal. The outputs are then visualized in an interactive heat map on our web application.<br/><br/></p>
 							<p id="current-time" style="margin-bottom: -50px;font-weight:bold"></p>
 						</header>
 
 						<div style="padding:2%; width:100%; height:50px; text-align:center">
 							<p><b>Montreal conditions</b>: Temp: {{temp}} C - Wind: {{wind}} km/h - Humidity: {{humidity}} - NASDAQ: {{nasdaq}} $USD
-							<p>PDQ <span id="p1" style="font-weight:bold">None selected</span><br/><a class="btn btn-secondary" href="https://spvm.qc.ca/fr/PDQ/" target="_blank" style="padding:2px;">Contact PDQ</a></p>
+							<p style="font-size: 18px;">Police Post ID: <span id="p1" style="font-weight:bold"><span style="color:red">Click on the map below to view the ID</span></span><br/><a class="btn btn-secondary" href="https://spvm.qc.ca/fr/PDQ/" target="_blank" style="padding:2px;">Contact Police Post</a></p>
 						</div>			<br/><br/><br/><br/>
 
 						<div style="padding:2%; width:100%; height:200px;">
@@ -106,7 +106,7 @@
 					    data: {
 					        labels: ['No crime', '0', '1', '2', '3', '4', '5'],
 					        datasets: [{
-					            label: 'Probability',
+					            label: 'Estimated crime probability',
 					            backgroundColor: 'rgba(255, 200, 0, 0.5)',
 					            borderColor: 'rgb(255, 200, 0, 1)',
 					            data: bar_data_array
