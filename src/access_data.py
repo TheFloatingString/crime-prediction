@@ -7,8 +7,8 @@ import pandas as pd
 from datetime import date, timedelta
 
 
-current_date = str(date.today() - timedelta(days=2))
-previous_date = str(date.today() - timedelta(days=3))
+current_date = str(date.today() - timedelta(days=22))
+previous_date = str(date.today() - timedelta(days=23))
 
 print(current_date)
 print(previous_date)
@@ -20,14 +20,9 @@ print(base_url)
 def get_climate_data(request_url):
 	r = requests.get(request_url)
 	data = r.content.decode('utf8')
+	print(data)
 	df_head = pd.read_csv(io.StringIO(data), header=0)
-
-	
-
 	return df_head
-
-
-
 
 df_data = get_climate_data(base_url)
 
