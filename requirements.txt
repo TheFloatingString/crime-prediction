@@ -1,0 +1,7 @@
+sklearn
+matplotlib
+numpy
+pandas
+requests
+tweepy
+yahoo_fin
