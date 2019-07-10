@@ -1,5 +1,7 @@
 # crime-prediction
 
+METEOHACK PROJECT:
 
-Police station numbers:
-pdq_list = [1.0, 3.0, 4.0, 5.0, 7.0, 8.0, 9.0, 10.0, 11.0, 12.0, 13.0, 15.0, 16.0, 20.0, 21.0, 22.0, 23.0, 24.0, 26.0, 27.0, 30.0, 31.0, 33.0, 35.0, 38.0, 39.0, 42.0, 44.0, 45.0, 46.0, 48.0, 49.0, 50.0, 55.0]
+CrimeAI uses real-time weather data, news articles and economic indicators to effectively predict the severity of possible crime in the metropolitan area of Montreal. On an hourly basis, our application pulls a plethora of climate data from the MSC Datamart, extracts economic standards from the NASDAQ API, and web crawls the latest relevant news articles from CBC Montreal. Our cutting-edge deep learning models then analyze these three sources of data to gauge the risk of critical criminal activity in all 31 police neighbourhoods in Montreal. The outputs are then visualized in an interactive heat map on our web application.
+
+CrimeAI is accessible at http://crimeai.herokuapp.com/ .
