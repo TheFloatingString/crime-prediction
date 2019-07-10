@@ -6,10 +6,21 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" href="{{ url_for('static', filename='assets/css/main.css') }}" />
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
 		<style>
 			#map {
         height: 100%;
       	}
+      	body{
+		background-image: url("static/images/bg.jpg");
+		background-attachment: fixed;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		/*position: fixed;*/
+		/*display: block;*/
+		}
   		</style>
 	</head>
 	<body>
@@ -30,8 +41,26 @@
 							<h2 style="margin-top: -15px;">Crime Heat Map for Montreal</h2>
 							<p id="current-time" style="margin-bottom: -10px;"></p>
 						</header>
+
+						<div style="padding:2%; width:100%; height:200px; background-color: white">
+							<canvas id="myChart" height="40"></canvas>
+
+						</div>
+
 						<div class="content" id="map" style="height: 600px;"></div>
 						<script>
+							var options = {
+							    yAxes: [{
+							        ticks: {
+							            min: 0,
+							            max: 1,
+							            stepSize: 0.2
+							        }
+							    }]
+							}
+
+							var bar_data_array = [0,0,0,0,0]
+
 							var myGeoJson = $.ajax({
 									url:"{{url_for('static', filename='limitespdq.geojson')}}",
 									dataType: "geojson",
@@ -48,7 +77,43 @@
 									zoom: 11
 								});
 
+								// Define the LatLng coordinates for the polygon's path.
+					        // Construct the polygon.
+
+					        {{draw_pdq_code|safe}}
+
 							}
+
+					var ctx = document.getElementById('myChart').getContext('2d');
+					var myBarChart = new Chart(ctx, {
+					    // The type of chart we want to create
+					    type: 'bar',
+
+					    // The data for our dataset
+					    data: {
+					        labels: ['0', '1', '2', '3', '4', '5'],
+					        datasets: [{
+					            label: 'Probability',
+					            backgroundColor: 'rgba(255, 200, 0, 0.5)',
+					            borderColor: 'rgb(255, 200, 0, 1)',
+					            data: bar_data_array
+					        }]
+					    },
+
+					    // Configuration options go here
+					    options: {
+					    			scales:{
+							    yAxes: [{
+							        ticks: {
+							            min: 0,
+							            max: 1,
+							            // stepSize: 0.2
+							        }
+							    }]
+							}
+						}
+					});
+
 						</script>
 						<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCQqgk65PB3UDym0ZXi2YkJ9WWYFtJDRs0&callback=initMap" async defer></script>
 					</section>
