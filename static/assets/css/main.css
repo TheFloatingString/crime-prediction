@@ -1,6 +1,8 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
 
+
+
 /*
 	Caminar by TEMPLATED
 	templated.co @templatedco
@@ -2910,7 +2912,7 @@
 			opacity: 0;
 		}
 
-		body:after {
+/*		body:after {
 			-moz-pointer-events: none;
 			-webkit-pointer-events: none;
 			-ms-pointer-events: none;
@@ -2920,7 +2922,7 @@
 			-ms-transition: opacity 1.5s ease-in-out, visibility 1.5s;
 			transition: opacity 1.5s ease-in-out, visibility 1.5s;
 			content: '';
-			background-image: url(bg.jpg);
+			background-image: url(static/images/city_bg.jpg);
 			background-attachment: fixed;
 			background-position: center;
 			background-repeat: no-repeat;
@@ -2934,7 +2936,7 @@
 			z-index: -1;
 			visibility: visible;
 			opacity: 1;
-		}
+		}*/
 
 			@media screen and (max-width: 980px) {
 
