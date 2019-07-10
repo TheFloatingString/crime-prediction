@@ -52,7 +52,7 @@ default_X_input_data = X_min_max_scaler.fit_transform(np.array(default_X_input_d
 @app.route('/', methods=['GET', 'POST'])
 @app.route('/home', methods=['GET', 'POST'])
 def home():
-	return render_template('index.html', draw_pdq_code=return_coords(default_X_input_data))
+	return render_template('index.html', draw_pdq_code=return_coords(default_X_input_data), temp=str(temp)[:4], wind=wind, humidity=humidity, nasdaq=str(nasdaq)[:6])
 
 @app.route('/get_pdq_data/<pdq_number>', methods=['GET'])
 def get_pdq_data(pdq_number):
